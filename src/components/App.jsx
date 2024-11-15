@@ -6,7 +6,15 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => [...prevTasks, { ...newTask, completed: false }]);
+  };
+
+  const completeTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task._id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const deleteTask = (id) => {
@@ -20,7 +28,7 @@ const App = () => {
       </h1>
       <Form addTask={addTask} />
       <div className="border-t border-gray-600 my-4"></div>
-      <List tasks={tasks} deleteTask={deleteTask} />
+      <List tasks={tasks} completeTask={completeTask} deleteTask={deleteTask} />
     </div>
   );
 };

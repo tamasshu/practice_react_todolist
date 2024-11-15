@@ -1,19 +1,31 @@
 import React, { useState } from "react";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  title: yup.string().trim().required("タスクを入力してください"),
+});
 
 const Form = ({ addTask }) => {
   const [taskTitle, setTaskTitle] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (taskTitle.trim() === "") return;
+    setError("");
 
-    const newTask = {
-      _id: Date.now(),
-      title: taskTitle,
-    };
+    try {
+      await schema.validate({ title: taskTitle });
 
-    addTask(newTask);
-    setTaskTitle("");
+      const newTask = {
+        _id: Date.now(),
+        title: taskTitle,
+      };
+      addTask(newTask);
+
+      setTaskTitle("");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -30,6 +42,7 @@ const Form = ({ addTask }) => {
           className="p-3 rounded-md border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
           placeholder="タスクを入力してください"
         />
+        {error && <p className="px-3 py-1 text-red-500">{error}</p>}
         <input
           type="submit"
           value="追加"
