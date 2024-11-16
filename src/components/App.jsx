@@ -11,7 +11,15 @@ const App = () => {
   const [sortOption, setSortOption] = useState("");
 
   const addTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => [...prevTasks, { ...newTask, completed: false }]);
+  };
+
+  const completeTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task._id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const clickDelete = (task) => {
@@ -19,12 +27,12 @@ const App = () => {
     setShowConfirm(true);
   };
 
-  const handleConfirmDelete = (id) => {
+  const confirmDelete = (id) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
     setShowConfirm(false);
   };
 
-  const handleCancelDelete = () => {
+  const cancelDelete = () => {
     setShowConfirm(false);
     setTaskToDelete(null);
   };
@@ -66,18 +74,19 @@ const App = () => {
         React Todo App
       </h1>
       <Form addTask={addTask} />
-      <div className="border-t border-gray-600 my-4 mx-auto max-w-screen-lg"></div>
+      <div className="border-t border-gray-600 my-4"></div>
       <SortTasks setSortOption={setSortOption} />
       <List
         tasks={sortedTasks}
+        completeTask={completeTask}
         clickDelete={clickDelete}
         updateTask={updateTask}
       />
       {showConfirm && (
         <ConfirmDelete
           task={taskToDelete}
-          onDelete={handleConfirmDelete}
-          onCancel={handleCancelDelete}
+          confirmDelete={confirmDelete}
+          cancelDelete={cancelDelete}
         />
       )}
     </div>

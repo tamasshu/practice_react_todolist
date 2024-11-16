@@ -1,6 +1,6 @@
 import React from "react";
 
-const ConfirmDelete = ({ task, onDelete, onCancel }) => {
+const ConfirmDelete = ({ task, confirmDelete, cancelDelete }) => {
   if (!task) return null;
 
   return (
@@ -16,13 +16,13 @@ const ConfirmDelete = ({ task, onDelete, onCancel }) => {
         </div>
         <div className="flex justify-center gap-6">
           <button
-            onClick={() => onDelete(task._id)}
+            onClick={() => confirmDelete(task._id)}
             className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
           >
             削除
           </button>
           <button
-            onClick={onCancel}
+            onClick={cancelDelete}
             className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
           >
             キャンセル
