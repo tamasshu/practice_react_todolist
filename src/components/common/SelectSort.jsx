@@ -1,18 +1,18 @@
+import { Button } from "./Button";
+
 export const SelectSort = ({ setSortType }) => {
   return (
-    <div className="flex justify-end space-x-4 mb-4">
-      <button
+    <div className="flex justify-end gap-4 px-6">
+      <Button
+        label="優先度順"
         onClick={() => setSortType("priority")}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        優先度順
-      </button>
-      <button
+        className="bg-teal-500 hover:bg-teal-600"
+      />
+      <Button
+        label="締切日順"
         onClick={() => setSortType("deadline")}
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-      >
-        締切日順
-      </button>
+        className="bg-teal-500 hover:bg-teal-600"
+      />
     </div>
   );
 };

@@ -6,7 +6,7 @@ export const useEdit = (tasks, setTasks) => {
 
   const handleEdit = (task) => {
     setEditTaskId(task._id);
-    setEditedTask({ ...task }); // 現在のタスク情報を編集用にコピー
+    setEditedTask({ ...task });
   };
 
   const handleChange = (field, value) => {
@@ -14,16 +14,18 @@ export const useEdit = (tasks, setTasks) => {
   };
 
   const handleUpdate = () => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task._id === editTaskId ? { ...task, ...editedTask } : task
-      )
+    const updatedTasks = tasks.map((task) =>
+      task._id === editTaskId ? { ...task, ...editedTask } : task
     );
-    setEditTaskId(null); // 編集モードを解除
+    setTasks(updatedTasks);
+
+    setEditTaskId(null);
+    setEditedTask({});
   };
 
   const handleCancel = () => {
-    setEditTaskId(null); // 編集モードを解除
+    setEditTaskId(null);
+    setEditedTask({});
   };
 
   return {

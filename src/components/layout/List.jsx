@@ -2,13 +2,9 @@ import { getTaskClass } from "../../lib/utils/className";
 import { Button } from "../common/Button";
 import { InputDeadline } from "../common/InputDeadline";
 import { SelectPriority } from "../common/SelectPriority";
-import { usePriority } from "../../features/hooks/usePriority";
-import { useDeadline } from "../../features/hooks/useDeadline";
 import { useEdit } from "../../features/hooks/useEdit";
 
-export const List = ({ tasks, openModal, completeTask }) => {
-  const { formatDeadline } = useDeadline();
-  const { formatPriority } = usePriority();
+export const List = ({ tasks, setTasks, openModal, completeTask }) => {
   const {
     editTaskId,
     editedTask,
@@ -16,40 +12,43 @@ export const List = ({ tasks, openModal, completeTask }) => {
     handleChange,
     handleUpdate,
     handleCancel,
-  } = useEdit(tasks);
+  } = useEdit(tasks, setTasks);
 
   return (
-    <ul className="max-w-lg mx-auto space-y-4 p-6">
+    <ul className="mx-auto space-y-4 p-6">
       {tasks.map((task) => (
         <li key={task._id} className={getTaskClass(task.completed)}>
           {task.title}
           {editTaskId === task._id ? (
-            <div className="flex gap-6">
+            <div className="flex gap-4">
               <SelectPriority
                 value={editedTask.priority}
                 onChange={(e) => handleChange("priority", e.target.value)}
               />
               <InputDeadline
                 value={editedTask.deadline}
-                onChange={(e) => handleChange("deadline", e.task.deadline)}
+                onChange={(e) => handleChange("deadline", e.target.value)}
               />
-              <button
+              <Button
+                label="更新"
                 onClick={() => handleUpdate(task)}
-                className="bg-green-500 text-white font-semibold px-4 py-3 rounded-md cursor-pointer hover:bg-green-600"
-              >
-                更新
-              </button>
+                className="bg-green-500 hover:bg-green-600"
+              />
+              <Button
+                label="キャンセル"
+                onClick={handleCancel}
+                className="bg-gray-500 hover:bg-gray-600"
+              />
             </div>
           ) : (
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <p>優先度： {task.priority}</p>
               <p>締切日： {task.deadline}</p>
-              <button
+              <Button
+                label="編集"
                 onClick={() => handleEdit(task)}
-                className="bg-blue-500 text-white px-3 py-1 rounded cursor-pointer hover:bg-blue-600"
-              >
-                編集
-              </button>
+                className="bg-blue-500 hover:bg-blue-600"
+              />
               <Button
                 label="完了"
                 className="bg-green-500 hover:bg-green-600"

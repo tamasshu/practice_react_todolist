@@ -13,7 +13,6 @@ export const useTaskForm = (setTasks) => {
   });
 
   const onSubmit = async (task) => {
-    console.log("onSubmit received task:", task);
     const newTask = {
       _id: Date.now(),
       title: task.title,
@@ -24,7 +23,6 @@ export const useTaskForm = (setTasks) => {
 
     await setTasks((prevTasks) => {
       const updatedTasks = [...prevTasks, newTask];
-      console.log("Updated tasks:", updatedTasks);
       return updatedTasks;
     });
 
