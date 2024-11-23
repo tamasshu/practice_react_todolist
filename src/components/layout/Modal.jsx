@@ -1,7 +1,7 @@
-import React from "react";
+import { Button } from "../common/Button";
 
-const ConfirmDelete = ({ task, confirmDelete, cancelDelete }) => {
-  if (!task) return null;
+export const Modal = ({ task, isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -15,22 +15,18 @@ const ConfirmDelete = ({ task, confirmDelete, cancelDelete }) => {
           <p className="mb-4">締切日： {task.deadline}</p>
         </div>
         <div className="flex justify-center gap-6">
-          <button
-            onClick={() => confirmDelete(task._id)}
-            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
-          >
-            削除
-          </button>
-          <button
-            onClick={cancelDelete}
-            className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-          >
-            キャンセル
-          </button>
+          <Button
+            label="キャンセル"
+            onClick={onClose}
+            className="bg-gray-500 hover:bg-gray-600"
+          />
+          <Button
+            label="削除"
+            onClick={onConfirm}
+            className="bg-red-500 hover:bg-red-600"
+          />
         </div>
       </div>
     </div>
   );
 };
-
-export default ConfirmDelete;
