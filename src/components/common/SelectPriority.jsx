@@ -5,7 +5,7 @@ export const SelectPriority = React.forwardRef(
     return (
       <select
         name={name}
-        className={`p-3 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none ${className}`}
+        className={`p-3 rounded-md border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 ${className}`}
         value={value}
         onChange={onChange}
         ref={ref}
