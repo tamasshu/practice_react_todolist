@@ -9,12 +9,12 @@ export const List = ({ tasks, deleteTask, completeTask }) => {
           {task.title}
           <div className="flex gap-6">
             <Button
-              label="完了"
+              children="完了"
               className="bg-green-500 hover:bg-green-600"
               onClick={() => completeTask(task._id)}
             />
             <Button
-              label="削除"
+              children="削除"
               className="bg-red-500 hover:bg-red-600"
               onClick={() => deleteTask(task._id)}
             />

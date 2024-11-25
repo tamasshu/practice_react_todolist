@@ -1,8 +1,8 @@
 import { Form } from "../components/layout/Form";
 import { List } from "../components/layout/List";
-import { useComplete } from "../features/hooks/useComplete";
-import { useDelete } from "../features/hooks/useDelete";
-import { useTasks } from "../features/hooks/useTasks";
+import { useComplete } from "../hooks/useComplete";
+import { useDelete } from "../hooks/useDelete";
+import { useTasks } from "../hooks/useTasks";
 
 export const Home = () => {
   const [tasks, setTasks] = useTasks();
