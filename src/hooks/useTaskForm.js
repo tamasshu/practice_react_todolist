@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { schemaResolver } from "../../lib/validation/schema";
+import { schemaResolver } from "../lib/validation/schema";
 
 export const useTaskForm = (setTasks) => {
   const {

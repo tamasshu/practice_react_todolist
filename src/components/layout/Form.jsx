@@ -2,7 +2,7 @@ import { Button } from "../common/Button";
 import { InputText } from "../common/InputText";
 import { SelectPriority } from "../common/SelectPriority";
 import { InputDeadline } from "../common/InputDeadline";
-import { useTaskForm } from "../../features/hooks/useTaskForm";
+import { useTaskForm } from "../../hooks/useTaskForm";
 
 export const Form = ({ setTasks }) => {
   const { register, handleSubmit, errors, onSubmit } = useTaskForm(setTasks);

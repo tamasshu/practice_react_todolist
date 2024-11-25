@@ -2,7 +2,7 @@ import { getTaskClass } from "../../lib/utils/className";
 import { Button } from "../common/Button";
 import { InputDeadline } from "../common/InputDeadline";
 import { SelectPriority } from "../common/SelectPriority";
-import { useEdit } from "../../features/hooks/useEdit";
+import { useEdit } from "../../hooks/useEdit";
 
 export const List = ({ tasks, setTasks, openModal, completeTask }) => {
   const {

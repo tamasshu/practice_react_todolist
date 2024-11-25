@@ -2,11 +2,11 @@ import { Modal } from "../components/layout/Modal";
 import { Form } from "../components/layout/Form";
 import { List } from "../components/layout/List";
 import { SelectSort } from "../components/common/SelectSort";
-import { useComplete } from "../features/hooks/useComplete";
-import { useDelete } from "../features/hooks/useDelete";
-import { useTasks } from "../features/hooks/useTasks";
-import { useModal } from "../features/hooks/useModal";
-import { useSort } from "../features/hooks/useSort";
+import { useComplete } from "../hooks/useComplete";
+import { useDelete } from "../hooks/useDelete";
+import { useTasks } from "../hooks/useTasks";
+import { useModal } from "../hooks/useModal";
+import { useSort } from "../hooks/useSort";
 
 export const Home = () => {
   const [tasks, setTasks] = useTasks();
