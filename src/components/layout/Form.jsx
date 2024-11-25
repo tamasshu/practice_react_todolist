@@ -1,5 +1,7 @@
 import { Button } from "../common/Button";
 import { InputText } from "../common/InputText";
+import { SelectPriority } from "../common/SelectPriority";
+import { InputDeadline } from "../common/InputDeadline";
 import { useTaskForm } from "../../hooks/useTaskForm";
 
 export const Form = ({ setTasks }) => {
@@ -8,13 +10,17 @@ export const Form = ({ setTasks }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-gray-800 p-6 rounded-lg space-y-4 max-w-md mx-auto"
+      className="bg-gray-800 p-6 rounded-lg space-y-4 max-w-xl mx-auto"
     >
       <div className="flex flex-col">
-        <InputText
-          {...register("title")}
-          className={`${errors.title ? "border-red-500" : ""}`}
-        />
+        <div className="flex w-full gap-4">
+          <InputText
+            {...register("title")}
+            className={`grow ${errors.title ? "border-red-500" : ""}`}
+          />
+          <SelectPriority {...register("priority")} />
+          <InputDeadline {...register("deadline")} />
+        </div>
         {errors.title && (
           <p className="px-3 py-1 text-red-500">{errors.title.message}</p>
         )}

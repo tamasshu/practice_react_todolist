@@ -16,6 +16,8 @@ export const useTaskForm = (setTasks) => {
     const newTask = {
       _id: Date.now(),
       title: task.title,
+      priority: task.priority,
+      deadline: task.deadline,
       completed: false,
     };
 
