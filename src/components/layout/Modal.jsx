@@ -16,12 +16,12 @@ export const Modal = ({ task, isOpen, onClose, onConfirm }) => {
         </div>
         <div className="flex justify-center gap-6">
           <Button
-            label="キャンセル"
+            children="キャンセル"
             onClick={onClose}
             className="bg-gray-500 hover:bg-gray-600"
           />
           <Button
-            label="削除"
+            children="削除"
             onClick={onConfirm}
             className="bg-red-500 hover:bg-red-600"
           />

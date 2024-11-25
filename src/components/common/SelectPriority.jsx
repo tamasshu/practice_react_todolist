@@ -1,7 +1,7 @@
 import React from "react";
 
 export const SelectPriority = React.forwardRef(
-  ({ name = "priority", onChange, className = "", value = "" }, ref) => {
+  ({ name = "priority", onChange, className = "", value }, ref) => {
     return (
       <select
         name={name}

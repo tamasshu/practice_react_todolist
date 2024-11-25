@@ -1,7 +1,7 @@
 import React from "react";
 
 export const InputDeadline = React.forwardRef(
-  ({ name = "deadline", onChange, className = "", value = "" }, ref) => {
+  ({ name = "deadline", onChange, className = "", value }, ref) => {
     return (
       <input
         name={name}

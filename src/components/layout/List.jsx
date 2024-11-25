@@ -30,12 +30,12 @@ export const List = ({ tasks, setTasks, openModal, completeTask }) => {
                 onChange={(e) => handleChange("deadline", e.target.value)}
               />
               <Button
-                label="更新"
+                children="更新"
                 onClick={() => handleUpdate(task)}
                 className="bg-green-500 hover:bg-green-600"
               />
               <Button
-                label="キャンセル"
+                children="キャンセル"
                 onClick={handleCancel}
                 className="bg-gray-500 hover:bg-gray-600"
               />
@@ -45,17 +45,17 @@ export const List = ({ tasks, setTasks, openModal, completeTask }) => {
               <p>優先度： {task.priority}</p>
               <p>締切日： {task.deadline}</p>
               <Button
-                label="編集"
+                children="編集"
                 onClick={() => handleEdit(task)}
                 className="bg-blue-500 hover:bg-blue-600"
               />
               <Button
-                label="完了"
+                children="完了"
                 className="bg-green-500 hover:bg-green-600"
                 onClick={() => completeTask(task._id)}
               />
               <Button
-                label="削除"
+                children="削除"
                 className="bg-red-500 hover:bg-red-600"
                 onClick={() => openModal(task)}
               />

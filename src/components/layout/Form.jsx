@@ -25,7 +25,7 @@ export const Form = ({ setTasks }) => {
           <p className="px-3 py-1 text-red-500">{errors.title.message}</p>
         )}
         <Button
-          label="追加"
+          children="追加"
           type="submit"
           className="mt-4 font-semibold rounded-md bg-teal-500 hover:bg-teal-600"
         />
